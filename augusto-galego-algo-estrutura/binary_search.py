@@ -26,7 +26,7 @@ def binary_search(nums, n):
             low = mid + 1
         else:
             # comment
-            print("it is in the left side. Mid number::", nums[mid])
+            print("it is in the left side.. Mid number::", nums[mid])
             high = mid
     return -1
 
