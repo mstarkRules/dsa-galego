@@ -2,7 +2,7 @@ import os
 import sys
 # Adiciona o diretório raiz ao sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.reverse_linked_list import ListNode, Solution
+from src.linked_lists.reverse_linked_list import ListNode, Solution
 
 
 def list_to_linkedlist(lst):
