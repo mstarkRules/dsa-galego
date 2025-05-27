@@ -65,6 +65,18 @@ class DoublyLinkedList:
             print(current.value, end=", " if current.next else "\n")
             current = current.next
 
+    def hasCycle(self, head: Node):
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                return True
+        return False
+
 
 dll = DoublyLinkedList()
 
@@ -109,3 +121,37 @@ print("Removendo de lista vazia (esperado None):", dll.remove_from_end())
 
 print("Lista final (esperado vazia):")
 dll.print_list()  # Output: None
+
+
+# testando ciclo
+node1 = Node(1)
+node2 = Node(2)
+node3 = Node(3)
+node4 = Node(4)
+node1.next = node2
+node2.next = node3
+node3.next = node4
+node4.next = node2  # criando um ciclo
+dll_with_cycle = DoublyLinkedList()
+dll_with_cycle.head = node1
+print("\nTeste de ciclo na lista:")
+print("Lista tem ciclo?", dll_with_cycle.hasCycle(
+    dll_with_cycle.head))  # Output: True
+
+# Note: The cycle detection method will not print the list correctly due to the cycle.
+# To avoid infinite loop in printing, we should not print the list with a cycle.
+# The cycle detection method is only for checking if a cycle exists, not for printing the list.
+# The above code demonstrates the functionality of a doubly linked list,
+# including adding and removing nodes, and checking for cycles.
+
+# testando lista sem ciclo
+node1 = Node(1)
+node2 = Node(2)
+node3 = Node(3)
+node1.next = node2
+node2.next = node3
+dll_without_cycle = DoublyLinkedList()
+dll_without_cycle.head = node1
+print("\nTeste de ciclo na lista sem ciclo:")
+print("Lista tem ciclo?", dll_without_cycle.hasCycle(
+    dll_without_cycle.head))  # Output: False
