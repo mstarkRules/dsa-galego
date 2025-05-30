@@ -1,6 +1,30 @@
 from typing import Literal
 
 
+def bubble_while(nums: list[int], order: Literal['asc', 'desc']):
+    size = len(nums)
+
+    i = 0
+
+    while i < size:
+        j = i
+        is_sorted = True
+        while j < size - 1:
+            if nums[j] > nums[j + 1]:
+                is_sorted = False
+                temp_current = nums[j]
+                nums[j] = nums[j + 1]
+                nums[j + 1] = temp_current
+
+            j += 1
+        if is_sorted:
+            print('ordered with while: ', nums)
+            return nums
+        i += 1
+
+    return nums
+
+
 def bubble(nums: list[int], order: Literal['asc', 'desc']):
     size = len(nums)
 
@@ -30,9 +54,8 @@ def bubble(nums: list[int], order: Literal['asc', 'desc']):
         if is_sorted:
             print('nums sorted. \n')
             return
+    return nums
 
 
 bubble([5, 1, 3, 10, 4], 'desc')
-
-
-bubble([85, 2, 1, 0, 4], 'asc')
+bubble_while([545, 2, 6], 'asc')
